@@ -10,4 +10,38 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+unset AUTO_CD
+
 # Customize to your needs...
+
+export PATH="$PATH:$HOME/CEdev/bin:$HOME/Programming/ats/ats/bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.cask/bin:$HOME/.npm-global/bin:$HOME/Programming/idris/idris-jvm/codegen/bin:$HOME/.cabal/bin:$HOME/.ghcup/bin:$HOME/.idris2/bin:$HOME/.ghcjs/bin:$HOME/Programming/zig/zig:$HOME/.nimble/bin:$HOME/.yarn/bin:$HOME/Programming/fstar/FStar/bin:$HOME/Programming/cedille/cedille"
+autoload -U +X bashcompinit && bashcompinit
+
+eval "$(stack --bash-completion-script stack)"
+
+export RUST_SRC_PATH="$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATSHOME="/usr/local/lib/ats2-postiats-0.3.11"
+export PATSCONTRIB=$PATSHOME
+
+source $HOME/nix-zsh-completions/nix.plugin.zsh
+fpath=($HOME/nix-zsh-completions $fpath)
+fpath+=~/.zfunc
+autoload -U compinit && compinit
+
+alias fstar=fstar.exe
+
+export EDITOR=nvim
+
+eval $(opam env)
+
+source $HOME/.ghcup/env
+
+export KIT_STD_PATH="$HOME/Programming/kit/kit/std"
+export KIT_TOOLCHAIN_PATH="$HOME/Programming/kit/kit/toolchains"
+
+unalias gr
